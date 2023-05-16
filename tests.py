@@ -1,10 +1,9 @@
 """Test file for the functions used in this game"""
-import pytest
 from unittest.mock import patch, mock_open
-from Game import game_logic, player_input
+from Game import game_logic
 
 from Game.game_logic import load_words, select_target_word, check_guess
-from main import user_statistics, calculate_wins_losses, handle_guess
+from main import user_statistics, calculate_wins_losses
 
 def test_load_words():
     """tests that the list of valid words matches the words in the txt file"""
@@ -12,6 +11,7 @@ def test_load_words():
     assert words == ['happy', 'sigma', 'bottle', 'phone']
 
 def test_select_target_word():
+    """test to check if a randomly selected word matches a word in the list of valid words"""
     words = ['happy', 'sigma', 'bottle', 'phone']
     for _ in range(100000): #random range incase list of words is really long
         word = game_logic.select_target_word(words)
