@@ -7,7 +7,7 @@ from main import user_statistics, calculate_wins_losses, handle_guess
 
 def test_load_words():
     """tests that the list of valid words matches the words in the txt file"""
-    words = load_words('Words/words.txt')
+    words = load_words('wordle_data/words.txt')
     assert words == ['happy', 'sigma', 'bottle', 'phone']
 
 def test_select_target_word():
@@ -27,7 +27,7 @@ def test_check_guess():
 @patch('builtins.open', new_callable=mock_open, read_data="Date: 16/05/2023, Guesses: 2, Win/Lose: Win, Wins to date: 0, Losses to date: 0\n")
 def test_calculate_wins_losses(mock_file):
     """Test to check if the calculate_wins_losses function identifies 'win' and adds 1 to wins"""
-    wins, losses = calculate_wins_losses('Words/results.txt')
+    wins, losses = calculate_wins_losses('wordle_data/results.txt')
     assert wins == 1
     assert losses == 0
 
