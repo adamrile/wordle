@@ -35,8 +35,8 @@ def test_calculate_wins_losses(mock_file):
 @patch('builtins.open', new_callable=mock_open)
 def test_user_statistics(mock_file, mock_calculate):
     """Test to check if the user_stats function writes to results.txt correctly"""
-    wins, losses = user_statistics(1, True, 'Words/results.txt')
-    mock_file.assert_called_once_with('Words/results.txt', 'a')
+    wins, losses = user_statistics(1, True, 'wordle_data/results.txt')
+    mock_file.assert_called_once_with('wordle_data/results.txt', 'a')
     mock_file().write.assert_called_once()
     assert wins == 1
     assert losses == 0
