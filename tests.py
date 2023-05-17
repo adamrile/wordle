@@ -1,9 +1,9 @@
 """Test file for the functions used in this game"""
 import pytest
 from unittest.mock import patch, mock_open
-from Game import game_logic, player_input
+from wordle_game import game_logic, player_input
 
-from Game.game_logic import load_words, select_target_word, check_guess
+from wordle_game.game_logic import load_words, select_target_word, check_guess
 from main import user_statistics, calculate_wins_losses, handle_guess
 
 def test_load_words():
@@ -18,7 +18,7 @@ def test_select_target_word():
         assert word in words
 
 def test_check_guess():
-    """test to check if the symbols match up to the letters that are correct/wrong"""
+    """test to check if the symbols match up to the letters that are correct/w"""
     assert check_guess('word', 'word') == ['+', '+', '+', '+']
     assert check_guess('word', 'ward') == ['+', '-', '+', '+']
     assert check_guess('word', 'list') == ['-', '-', '-', '-']

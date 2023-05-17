@@ -1,9 +1,9 @@
 """Main script that brings all functions together runs the game"""
 import datetime
-from Game import game_logic, player_input
+from wordle_game import game_logic, player_input
 
 def user_statistics(guesses: int, win: bool, file_path: str) -> tuple[int, int]:
-    """Function to write the user stats to results.txt in the /Words directory"""
+    """Function to write the user stats to results.txt in the /wordle_data directory"""
     wins, losses = calculate_wins_losses(file_path)
     if win:
         wins += 1
@@ -46,17 +46,17 @@ def handle_guess(target_word: str, valid_words: list, guesses_left: int) -> bool
 
 def main():
     """main function that shows the order that the functions need to run"""
-    words = game_logic.load_words('Words/words.txt')
+    words = game_logic.load_words('wordle_data/wordle_words.txt')
     target_word = game_logic.select_target_word(words)
     wins = 0
     losses = 0
     for guesses_left in range(5, 0, -1):
         if handle_guess(target_word, words, guesses_left):
-            wins, losses = user_statistics(5 - guesses_left + 1, True, 'Words/results.txt')
+            wins, losses = user_statistics(5 - guesses_left + 1, True, 'wordle_data/results.txt')
             break
     else:
         player_input.print_end_message(False, target_word)
-        wins, losses = user_statistics(5, False, 'Words/results.txt')
+        wins, losses = user_statistics(5, False, 'wordle_data/results.txt')
 
     print(f"Wins: {wins}, Losses: {losses}")
 
