@@ -7,7 +7,7 @@ from main import user_statistics, calculate_wins_losses, handle_guess
 
 def test_load_words():
     """tests that the list of valid words matches the words in the txt file"""
-    words = load_words('wordle_data/words.txt')
+    words = load_words('wordle_data/wordle_words.txt')
     assert words == ['happy', 'sigma', 'bottle', 'phone']
 
 def test_select_target_word():
